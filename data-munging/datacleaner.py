@@ -55,7 +55,7 @@ def check_to_date(x, y, validy):
         else:
             return 'INVALID'
     else:
-        return 'VALID'
+        return 'INVALID'
 
 
 def check_report_date(x, y, validy):
