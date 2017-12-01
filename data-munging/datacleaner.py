@@ -134,7 +134,7 @@ def check_xco(x):
     if x is None:
         return 'NULL'
     try:
-        xc = int(x)
+        xc = int(x.replace(',',''))
     except Exception as e:
         return 'NULL'
     if xc in range (909900, 1067601):
@@ -147,7 +147,7 @@ def check_yco(y):
     if y is None:
         return 'NULL'
     try:
-        yc = int(y)
+        yc = int(y.replace(',',''))
     except Exception as e:
         return 'NULL'
     if yc in range (117500, 275001):
