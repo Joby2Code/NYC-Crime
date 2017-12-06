@@ -1,0 +1,8 @@
+This document list the possible use cases for the Crime analysis.
+1. Create data summary
+2. A graph that illustrates the crime count in every borough with respect to year
+3. The type of crime that was most frequently committed.
+4. Subtype of the crime that was most frequently committed.
+5. Trend analysis of crimes committed over time.
+6. Time of occurrence and location of a crimes.
+7. Exploratory analysis of the crime against different dataset like premise of crime occurrence to link the crime data to the premise data.
