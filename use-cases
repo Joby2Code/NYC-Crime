@@ -1,6 +1,6 @@
 This document list the possible use cases for the Crime analysis.
 1. Create data summary
-2. A graph that illustrates the crime count in every borough with respect to year
+2. A graph that illustrates the crime count in every borough with respect to year: Work in Progress (Joby)
 3. The type of crime that was most frequently committed.
 4. Subtype of the crime that was most frequently committed.
 5. Trend analysis of crimes committed over time.
