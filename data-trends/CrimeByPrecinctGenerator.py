@@ -17,8 +17,6 @@ def check_precinct(x):
         return 'NULL'
 
 
-
-
 sc=SparkContext();
 csvfile = sc.textFile(sys.argv[1], 1);
 #csvfile = sc.textFile("NYPD_Complaint_Data_Historic.csv");
