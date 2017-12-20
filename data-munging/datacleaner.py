@@ -58,8 +58,20 @@ def check_to_date(x, y, validy):
         return 'INVALID'
 
 
-def check_report_date(x, y, validy):
-    return check_to_date(x, y, validy)
+def check_report_date(x):
+    date = x.split('/')
+    if len(date) != 3:
+        return 'NULL'
+    try:
+        m = int(date[0])
+        d = int(date[1])
+        Y = int(date[2])
+    except Exception as e:
+        return 'NULL'
+    if (m not in range(1, 13)) or (d not in range(1, 32)) or (Y not in range(1900, 2016)):
+        return 'INVALID'
+    else:
+        return 'VALID'
 
 # Check 3 digit key  code
 def check_key_code(x):
@@ -323,6 +335,28 @@ sc.parallelize((borough.map(lambda x : x[1]).take(100))).saveAsTextFile("borough
 sc.parallelize((xcoordinate.map(lambda x : x[1]).take(100))).saveAsTextFile("xcoordinatesampler.out");
 sc.parallelize((longitude.map(lambda x : x[1]).take(100))).saveAsTextFile("longititudesampler.out");
 
+#Cleaning the Invalid Data
+crimedata = crimedata.filter(lambda x: check_from_date(x[1])=='VALID')
+crimedata = crimedata.filter(lambda x: check_from_time(x[2])=='VALID')
+crimedata = crimedata.filter(lambda x: check_report_date(x[5])=='VALID')
+crimedata = crimedata.filter(lambda x: check_key_code(x[6])=='VALID')
+crimedata = crimedata.filter(lambda x: check_offense_description(x[7])=='VALID')
+crimedata = crimedata.filter(lambda x: check_pd_code(x[8])=='VALID')
+crimedata = crimedata.filter(lambda x: check_pd_description(x[9])=='VALID')
+crimedata = crimedata.filter(lambda x: check_crime_completed(x[10])=='VALID')
+crimedata = crimedata.filter(lambda x: check_offense_level(x[11])=='VALID')
+crimedata = crimedata.filter(lambda x: check_jurisdiction(x[12])=='VALID')
+crimedata = crimedata.filter(lambda x: check_borough(x[13])=='VALID')
+crimedata = crimedata.filter(lambda x: check_precinct(x[14])=='VALID')
+crimedata = crimedata.filter(lambda x: check_specific_location(x[15])=='VALID')
+crimedata = crimedata.filter(lambda x: check_premises(x[16])=='VALID')
+crimedata = crimedata.filter(lambda x: check_xco(x[19])=='VALID')
+crimedata = crimedata.filter(lambda x: check_yco(x[20])=='VALID')
+crimedata = crimedata.filter(lambda x: check_latitude(x[21])=='VALID')
+crimedata = crimedata.filter(lambda x: check_longitude(x[22])=='VALID')
 
+print "Number of rows after cleaning:"+str(crimedata.count())
+
+crimedata.saveAsTextFile("NYPD_Complaint_Data_Historic_Cleaned.csv")
 #Stoppping Spark SparkContext
 sc.stop()

@@ -1,3 +1,8 @@
-Real Estate and Geo Coordinate Mapper
+NYPD Crime Dataset
+https://data.cityofnewyork.us/Public-Safety/NYPD-Complaint-Data-Historic/qgea-i56i
 
+Real Estate and Geo Coordinate Mapper
 https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-nynta.page
+
+Weather Dataset
+http://www1.nyc.gov/site/finance/taxes/property-annualized-sales-update.page
